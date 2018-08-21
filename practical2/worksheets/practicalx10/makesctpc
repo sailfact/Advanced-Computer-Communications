@@ -1,0 +1,27 @@
+stcpclient01.out: sctp_wrapper.o sock_ntop.o sctp_print_addrs.o sctp_check_notify.o sctp_strcliecho.o sctp_strcli.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o sctpclient01.o 
+	cc -o sctpclient01.out sctp_wrapper.o sock_ntop.o sctp_print_addrs.o sctp_check_notify.o sctp_strcliecho.o sctp_strcli.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o sctpclient01.o  -lsctp
+
+error.o: error.c acc.h
+	cc -c error.c
+wrapunix.o: wrapunix.c acc.h
+	cc -c wrapunix.c
+wrapsock.o: wrapsock.c acc.h
+	cc -c wrapsock.c
+sock_ntop.o: sock_ntop.c acc.h
+	cc -c sock_ntop.c
+wraplib.o: wraplib.c acc.h
+	cc -c wraplib.c
+wrapstdio.o: wrapstdio.c acc.h
+	cc -c wrapstdio.c
+sctpclient01.o: sctpclient01.c acc.h
+	cc -c sctpclient01.c 
+sctp_strcli.o: sctp_strcli.c acc.h
+	cc -c sctp_strcli.c 
+sctp_wrapper.o: sctp_wrapper.c acc.h
+	cc -c sctp_wrapper.c 
+sctp_check_notify.o: sctp_check_notify.c acc.h
+	cc -c sctp_check_notify.c 
+sctp_strcliecho.o: sctp_strcliecho.c acc.h
+	cc -c sctp_strcliecho.c 
+sctp_print_addrs.o: sctp_print_addrs.c acc.h
+	cc -c sctp_print_addrs.c 

@@ -1,0 +1,23 @@
+example02.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o example02.o wrappthread.o
+	cc -o example02.out wrappthread.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o example02.o -lpthread
+
+error.o: error.c acc.h
+	cc -c error.c
+
+wrapunix.o: wrapunix.c acc.h
+	cc -c wrapunix.c
+
+wrapsock.o: wrapsock.c acc.h
+	cc -c wrapsock.c
+
+wraplib.o: wraplib.c acc.h
+	cc -c wraplib.c
+
+wrapstdio.o: wrapstdio.c acc.h
+	cc -c wrapstdio.c
+
+example02.o: example02.c acc.h
+	cc -c example02.c
+
+wrappthread.o: wrappthread.c acc.h
+	cc -c wrappthread.c

@@ -1,0 +1,11 @@
+hostent: error.o wraplib.o hostent.o
+	cc -o hostent error.o wraplib.o hostent.o
+
+error.o: error.c acc.h
+	cc -c error.c
+
+wraplib.o: wraplib.c acc.h
+	cc -c wraplib.c
+
+hostent.o: hostent.c acc.h
+	cc -c hostent.c

@@ -1,0 +1,53 @@
+serv02.out: child02.o signal.o sigchldwaitpid.o web_child.o pr_cpu_time.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o serv02.o readline.o writen.o tcp_listen.o host_serv.o wrappthread.o readn.o
+	cc -o serv02.out readn.o child02.o signal.o sigchldwaitpid.o web_child.o pr_cpu_time.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o serv02.o readline.o writen.o tcp_listen.o host_serv.o wrappthread.o -lpthread
+
+error.o: error.c acc.h
+	cc -c error.c
+
+readn.o: readn.c acc.h
+	cc -c readn.c
+
+wrapunix.o: wrapunix.c acc.h
+	cc -c wrapunix.c
+
+wrapsock.o: wrapsock.c acc.h
+	cc -c wrapsock.c
+
+wraplib.o: wraplib.c acc.h
+	cc -c wraplib.c
+
+wrapstdio.o: wrapstdio.c acc.h
+	cc -c wrapstdio.c
+
+serv02.o: serv02.c acc.h
+	cc -c serv02.c
+
+readline.o: readline.c acc.h
+	cc -c readline.c
+
+writen.o: writen.c acc.h
+	cc -c writen.c
+
+tcp_listen.o: tcp_listen.c acc.h
+	cc -c tcp_listen.c
+
+host_serv.o: host_serv.c acc.h
+	cc -c host_serv.c
+
+wrappthread.o: wrappthread.c acc.h
+	cc -c wrappthread.c
+
+pr_cpu_time.o: pr_cpu_time.c acc.h
+	cc -c pr_cpu_time.c
+
+web_child.o: web_child.c acc.h
+	cc -c web_child.c
+
+signal.o: signal.c acc.h
+	cc -c signal.c
+
+sigchldwaitpid.o: sigchldwaitpid.c acc.h
+	cc -c sigchldwaitpid.c
+
+child02.o: child02.c acc.h
+	cc -c child02.c

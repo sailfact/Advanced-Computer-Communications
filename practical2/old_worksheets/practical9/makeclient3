@@ -1,0 +1,23 @@
+mcast_time_cli: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o mcast_time_cli.o signal.o
+	cc -o mcast_time_cli mcast_time_cli.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o signal.o
+
+error.o: error.c acc.h
+	cc -c error.c
+
+wrapunix.o: wrapunix.c acc.h
+	cc -c wrapunix.c
+
+wrapsock.o: wrapsock.c acc.h
+	cc -c wrapsock.c
+
+wraplib.o: wraplib.c acc.h
+	cc -c wraplib.c
+
+wrapstdio.o: wrapstdio.c acc.h
+	cc -c wrapstdio.c
+
+mcast_time_cli.o: mcast_time_cli.c acc.h
+	cc -c mcast_time_cli.c
+
+signal.o: signal.c acc.h
+	cc -c signal.c
