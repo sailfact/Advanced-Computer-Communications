@@ -11,6 +11,7 @@
 #include <netinet/in.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <signal.h>
 
 #define	MAXLINE	4096
 #define	LISTENQ	1024

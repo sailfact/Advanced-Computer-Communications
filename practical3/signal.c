@@ -1,6 +1,6 @@
 /* include signal */
 #include	"acc.h"
-#include	<signal.h>
+
 typedef	void Sigfunc(int);
 
 Sigfunc *
