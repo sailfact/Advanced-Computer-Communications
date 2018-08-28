@@ -1,5 +1,5 @@
-tcpcli01.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpcli01.o readline.o writen.o str_cli.o
-	cc -o tcpcli01.out str_cli.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpcli01.o readline.o writen.o
+tcpcli01.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpcli01.o readline.o writen.o strcliselect02.o
+	cc -o tcpcli01.out strcliselect02.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpcli01.o readline.o writen.o
 
 error.o: error.c acc.h
 	cc -c error.c
@@ -19,8 +19,8 @@ wrapstdio.o: wrapstdio.c acc.h
 tcpcli01.o: tcpcli01.c acc.h
 	cc -c tcpcli01.c
 
-str_cli.o: str_cli.c acc.h
-	cc -c str_cli.c
+strcliselect02.o: strcliselect02.c acc.h
+	cc -c strcliselect02.c
 
 readline.o: readline.c acc.h
 	cc -c readline.c

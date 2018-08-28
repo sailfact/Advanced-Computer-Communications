@@ -1,5 +1,5 @@
-tcpserv04.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpserv04.o readline.o writen.o str_echo.o signal.o sigchldwaitpid.o
-	cc -o tcpserv04.out str_echo.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpserv04.o readline.o writen.o signal.o sigchldwaitpid.o
+tcpservselect01.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpservselect01.o readline.o writen.o str_echo.o signal.o sigchldwaitpid.o
+	cc -o tcpservselect01.out str_echo.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpservselect01.o readline.o writen.o signal.o sigchldwaitpid.o
 
 error.o: error.c acc.h
 	cc -c error.c
@@ -16,8 +16,8 @@ wraplib.o: wraplib.c acc.h
 wrapstdio.o: wrapstdio.c acc.h
 	cc -c wrapstdio.c
 
-tcpserv04.o: tcpserv04.c acc.h
-	cc -c tcpserv04.c
+tcpservselect01.o: tcpservselect01.c acc.h
+	cc -c tcpservselect01.c
 
 str_echo.o: str_echo.c acc.h
 	cc -c str_echo.c
