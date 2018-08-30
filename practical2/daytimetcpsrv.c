@@ -10,13 +10,12 @@
 int
 main(int argc, char **argv)
 {
-	int			listenfd, connfd;
+	int				listenfd, connfd;
 	socklen_t		len;
 	struct sockaddr_in	servaddr, cliaddr;
 	char			buff[MAXLINE];
 	time_t			ticks;
-	int yes = 1;
-	const char	*ptr;
+	const char		*ptr;
 
 	if ( (listenfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ){
 		fprintf(stderr, "socket creation failed\n");
@@ -27,6 +26,8 @@ main(int argc, char **argv)
 	servaddr.sin_family      = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	servaddr.sin_port        = htons(SERV_TCP_PORT); /* daytime server */
+
+	printf("%s|%d",inet_ntop(AF_INET, &servaddr.sin_addr, buff, sizeof(buff)), servaddr.sin_port );
 
 	if ( (bind(listenfd, (SA *) &servaddr, sizeof(servaddr))) < 0) {
 		fprintf(stderr, "bind failed\n");
@@ -46,8 +47,8 @@ main(int argc, char **argv)
 			exit (1);
 		}
 
-		if (getpeername(listen, (SA *) &cliaddr, &len) < 0) {
-			fprintf(stderr, "getpeername failed%s\n");
+		if (getpeername(listenfd, (SA *) &cliaddr, &len) < 0) {
+			fprintf(stderr, "getpeername failed\n");
 			exit (1);
 		}
 
