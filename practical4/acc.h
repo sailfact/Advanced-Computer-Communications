@@ -18,6 +18,7 @@
 #define	MAXLINE	4096
 #define	LISTENQ	1024
 #define	SERV_TCP_PORT	52001
+#define TIMEOUT 20
 #define	SA	struct sockaddr
 #define	min(a,b)	((a) < (b) ? (a) : (b))
 #define	max(a,b)	((a) > (b) ? (a) : (b))

@@ -5,21 +5,21 @@ void str_file(int sockfd)
 	ssize_t		n, read;
 	char		line[MAXLINE];
 	char		buffer[MAXLINE];
-	int 		inFile;
+	FILE 		*fp;
 
 	for ( ; ; ) {
 		if ( (n = Readline(sockfd, line, MAXLINE)) == 0)
 			return;		/* connection closed by other end */
-		printf(">%s", line);
-		
-		inFile = Open("test.txt", O_RDONLY, S_IRUSR);
-		if (inFile < 0)
-			return;
 
-		read = Readline(inFile, buffer, MAXLINE);
-		Writen(0, buffer, MAXLINE);
-		Writen(sockfd, buffer, MAXLINE);
+		fp = fopen("test.txt", "r");
+
+		if (fp != NULL) {
+			n = fread(buffer, MAXLINE, 1, fp);
+		}
+
+		printf("%s", buffer);
+		Writen(sockfd, buffer, strlen(buffer));
 		
-		Close(inFile);
+		fclose(fp);
 	}
 }

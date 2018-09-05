@@ -4,11 +4,16 @@
 int
 main(int argc, char **argv)
 {
-	int			listenfd, connfd;
+	int			listenfd, connfd, timeout;
 	pid_t			childpid;
 	socklen_t		clilen;
 	struct sockaddr_in	cliaddr, servaddr;
 	void			sig_chld(int);
+
+	if (argc == 2)
+		timeout = atoi(argv[1]);
+	else
+		timeout = TIMEOUT;
 
 	listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
@@ -21,7 +26,7 @@ main(int argc, char **argv)
 
 	Listen(listenfd, LISTENQ);
 
-	signal(SIGCHLD, sig_chld);	/* must call waitpid() */
+	Signal(SIGCHLD, sig_chld);	/* must call waitpid() */
 
 	for ( ; ; ) {
 		clilen = sizeof(cliaddr);
@@ -34,7 +39,7 @@ main(int argc, char **argv)
 
 		if ( (childpid = Fork()) == 0) {	/* child process */
 			Close(listenfd);	/* close listening socket */
-			str_echo(connfd);	/* process the request */
+			str_echo(connfd, timeout);	/* process the request */
 			exit(0);
 		}
 		Close(connfd);		/* parent closes connected socket */
