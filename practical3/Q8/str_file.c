@@ -6,19 +6,26 @@ void str_file(int sockfd)
 	char		line[MAXLINE];
 	char		buffer[MAXLINE];
 	FILE 		*fp;
+	long 		numbytes;
 
-	for ( ; ; ) {
+	while (1) {
 		if ( (n = Readline(sockfd, line, MAXLINE)) == 0)
 			return;		/* connection closed by other end */
 
-		fp = fopen("test.txt", "r");
+		fp = Fopen("test.txt", "r");
 
 		if (fp != NULL) {
-			n = fread(buffer, MAXLINE, 1, fp);
+			fseek(fp, 0L, SEEK_END);
+			numbytes = ftell(fp);
+			fseek(fp, 0L, SEEK_SET);
+
+			if (buffer != NULL) {
+				fread(buffer, sizeof(char), numbytes, fp);
+			}
 		}
 
-		printf("%s", buffer);
-		Writen(sockfd, buffer, strlen(buffer));
+		Write(0, buffer, numbytes);
+		Writen(sockfd, buffer, numbytes);
 		
 		fclose(fp);
 	}

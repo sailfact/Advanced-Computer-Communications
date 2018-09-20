@@ -1,7 +1,6 @@
 #include	"acc.h"
 
-void
-str_cli(FILE *fp, int sockfd)
+void str_cli(FILE *fp, int sockfd)
 {
 	char	sendline[MAXLINE], recvline[MAXLINE];
 
@@ -13,6 +12,7 @@ str_cli(FILE *fp, int sockfd)
 		if (Readline(sockfd, recvline, MAXLINE) == 0)
 			err_quit("str_cli: server terminated prematurely");
 
+		printf("%s\n",recvline);
 		Write(stdout, recvline, sizeof(recvline));
 	}
 }

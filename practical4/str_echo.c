@@ -6,16 +6,12 @@ str_echo(int sockfd, int timeout)
 	ssize_t			n;
 	char			line[MAXLINE];
 	struct timeval 	timeval;
-
+	fd_set		rset;
 	timeval.tv_sec = timeout;
 	timeval.tv_usec = 0;
-
-	fd_set		rset;
-	
+	FD_ZERO(&rset);
+	FD_SET(sockfd, &rset);
 	for ( ; ; ) {
-		FD_ZERO(&rset);
-		FD_SET(sockfd, &rset);
-
 		if (Select(sockfd+1, &rset, NULL, NULL, &timeval) <= 0)
 		{
 			snprintf(line, sizeof(line), "input error\n");
@@ -27,8 +23,8 @@ str_echo(int sockfd, int timeout)
 		{
 			if ( (n = Readline(sockfd, line, MAXLINE)) == 0)
 				return;		/* connection closed by other end */
-
 			Writen(sockfd, line, n);
+
 		}
 	}
 }

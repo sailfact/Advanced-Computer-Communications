@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
 	Listen(listenfd, LISTENQ);
 
-	signal(SIGCHLD, sig_chld);
+	//signal(SIGCHLD, sig_chld);
 
 	for ( ; ; ) {
 		clilen = sizeof(cliaddr);
