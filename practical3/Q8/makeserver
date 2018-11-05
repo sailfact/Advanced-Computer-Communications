@@ -1,5 +1,5 @@
-tcpserv01.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpserv01.o readline.o writen.o str_file.o
-	cc -o tcpserv01.out str_file.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpserv01.o readline.o writen.o
+tcpserv01.out: error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpserv01.o readline.o writen.o str_echo.o
+	cc -o tcpserv01.out str_echo.o error.o wrapunix.o wrapsock.o wraplib.o wrapstdio.o tcpserv01.o readline.o writen.o
 
 error.o: error.c acc.h
 	cc -c error.c
@@ -19,8 +19,8 @@ wrapstdio.o: wrapstdio.c acc.h
 tcpserv01.o: tcpserv01.c acc.h
 	cc -c tcpserv01.c
 
-str_file.o: str_file.c acc.h
-	cc -c str_file.c
+str_echo.o: str_echo.c acc.h
+	cc -c str_echo.c
 
 readline.o: readline.c acc.h
 	cc -c readline.c

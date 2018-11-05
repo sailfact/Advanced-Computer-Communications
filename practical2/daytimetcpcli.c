@@ -50,7 +50,7 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	printf("Server address : %s/%d\n", ptr, ntohs(servaddr.sin_port));
+	printf("Server address : %s/%d\n", buff, ntohs(servaddr.sin_port));
 
 	printf("Client: ");
 	while ( (n = recv(sockfd, recvline, MAXLINE, 0)) > 0) {

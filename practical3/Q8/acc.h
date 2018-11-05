@@ -19,5 +19,5 @@
 
 #define	MAXLINE	4096
 #define	LISTENQ	1024
-#define	SERV_TCP_PORT	51029
+#define	SERV_TCP_PORT	51020
 #define	SA	struct sockaddr
